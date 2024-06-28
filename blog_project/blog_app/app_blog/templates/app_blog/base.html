@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>  
+    <title>{% block title %}BLOG APP{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'blog/styles.css' %}">
+    
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar" style="height: 33rem;">
+            {% include 'app_blog/menu.html' %}
+        </div>
+        <div class="main-content">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+</body>
+</html>

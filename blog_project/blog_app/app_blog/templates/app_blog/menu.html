@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .vertical-menu {
+      width: 200px;
+    }
+    
+    .vertical-menu a {
+      background-color: #eee;
+      color: black;
+      display: block;
+      padding: 12px;
+      text-decoration: none;
+      width: 200px;
+    }
+    
+    .vertical-menu a:hover {
+      background-color: #ccc;
+    }
+    
+    .vertical-menu a.active {
+      background-color: #04AA6D;
+      color: white;
+    }
+     
+    .dropdown {
+        position: relative;
+        display: inline-block;
+      }
+      
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f1f1f1;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+      }
+      
+    .dropdown-content a {
+        color: black;
+        padding:0.5rem;
+        text-decoration: none;
+        display: block;
+      }
+      
+    .dropdown-content a:hover {background-color: #ddd;}
+      
+    .dropdown:hover .dropdown-content {display: block;}
+    
+        
+</style>   
+<body>
+<h2>BLOG MENU</h2>
+
+<div class="vertical-menu">
+  <a href="{% url 'post_list' %}" class='active'>VIEW POST</a>
+  <a href="{% url 'create_post' %}">CREATE POST</a>
+  <a href="{% url 'edit_post_list' %}" >EDIT POST</a>
+  <a href="{% url 'delete_post_list' %}" >DELETE POST</a>
+    <div class="dropdown">
+        <a class="vertical-menu">FILTER BY AUTHOR</button>
+        <div class="dropdown-content">
+                    
+            <a href="{% url 'filter_postby_author' %}?aut=John Doe">John Doe</a>
+            <a href="{% url 'filter_postby_author' %}?author=Rachel Eco" {% if selected_author == 'Rachel Eco' %}class="selected"{% endif %}>Rachel Eco</a>
+            <a href="{% url 'filter_postby_author' %}?author=Dr. Emma Stone" {% if selected_author == 'Dr. Emma Stone' %}class="selected"{% endif %}>Dr. Emma Stone</a> 
+            <a href="{% url 'filter_postby_author' %}?author=Dr. Jane Starfield" {% if selected_author == 'Dr. Jane Starfield' %}class="selected"{% endif %}>Dr. Jane Starfield</a>      
+            <a href="{% url 'filter_postby_author' %}?author=Mark Thompson" {% if selected_author == 'Mark Thompson' %}class="selected"{% endif %}>Mark Thompson</a>
+            <a href="{% url 'filter_postby_author' %}?author=Laura Peace" {% if selected_author == 'Laura Peace' %}class="selected"{% endif %}>Laura Peace</a>
+        </div>
+    </div>
+    <div class="dropdown">
+      <a class="vertical-menu">FILTER BY TAG</button>
+      <div class="dropdown-content">  
+        <a href="{% url 'filter_postby_tag' %}?tag=Astronomy" {% if selected_tag == 'Astronomy' %}class="selected"{% endif %}>Astronomy</a>
+        <a href="{% url 'filter_postby_tag' %}?tag=Cooking" {% if selected_tag == 'Cooking' %}class="selected"{% endif %}>Cooking</a>
+        <a href="{% url 'filter_postby_tag' %}?tag=Environment" {% if selected_tag == 'Environment' %}class="selected"{% endif %}>Environment</a>
+        <a href="{% url 'filter_postby_tag' %}?tag=History" {% if selected_tag == 'History' %}class="selected"{% endif %}>History</a>
+        <a href="{% url 'filter_postby_tag' %}?tag=Programming" {% if selected_tag == 'Programming' %}class="selected"{% endif %}>Programming</a>
+      </div>
+  </div>
+</div>
+</body>
+</html>

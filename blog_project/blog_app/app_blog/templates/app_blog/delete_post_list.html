@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% extends 'app_blog/base.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">   
+</head>
+<body>
+{% block content %}
+       <h1>DELETE POST</h1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>TITLE</th>
+            <th>CONTENT</th>
+            <th>AUTHOR</th>
+            <th>TAGS</th>
+            <th>DELETE</th>
+        </tr>
+
+        {% for task in tasks %}
+        <tr>
+            <td>{{ task.id }}</td>
+            <td>{{ task.title }}</td>
+            <td>{{ task.content }}</td>
+            <td>{{ task.author }}</td>
+            <td>{{ task.tag }}</td>
+            <td><a href="{% url 'delete_post' task.id %}">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>    
+    </table>
+    </body>
+{% endblock %}
+</body>
+</html>
